@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ССРС — Советская Социалистическая Республика Селестия</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c16;
+            font-family: 'Inter', sans-serif;
+            color: #d6dceb;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: #0f121f;
+            border: 1px solid #262c44;
+            border-radius: 24px;
+            padding: 44px 48px 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #262c44;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .header .state-name {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #d4af37;
+        }
+
+        .header .state-name small {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #7a82a0;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .header .motto {
+            margin-top: 14px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #b8bfd6;
+            letter-spacing: 1.5px;
+            border-top: 1px solid #1e2340;
+            padding-top: 14px;
+        }
+
+        .header .motto span {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 14px;
+            padding: 18px 22px 20px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            border-color: #3a415f;
+        }
+
+        .card .label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #6a7294;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .card .value {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #e8ecf7;
+            line-height: 1.4;
+        }
+
+        .card .value small {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: #8f97b5;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .card .value .accent {
+            color: #d4af37;
+        }
+
+        .card-conflict {
+            border-color: #6b2e2e;
+            background: #171b2a;
+        }
+
+        .card-conflict .label {
+            color: #b55a5a;
+        }
+
+        .card-conflict .value {
+            color: #e8a0a0;
+        }
+
+        .full {
+            grid-column: 1 / -1;
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 0;
+        }
+
+        .goals-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #1a1f30;
+            font-size: 1.05rem;
+            color: #d6dceb;
+        }
+
+        .goals-list li:last-child {
+            border-bottom: none;
+        }
+
+        .goals-list .num {
+            color: #d4af37;
+            font-weight: 700;
+            font-size: 0.85rem;
+            min-width: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .goals-list .goal-text {
+            font-weight: 400;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0 20px;
+        }
+
+        .media-box {
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 14px;
+            padding: 22px 20px 20px;
+            text-align: center;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .media-box:hover {
+            border-color: #3a415f;
+        }
+
+        .media-box .media-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #6a7294;
+            margin-bottom: 10px;
+        }
+
+        .media-box .placeholder-icon {
+            font-size: 2.2rem;
+            opacity: 0.3;
+            margin-bottom: 6px;
+        }
+
+        .media-box .placeholder-text {
+            font-size: 0.8rem;
+            color: #5a627f;
+            font-weight: 300;
+        }
+
+        .media-box .divider {
+            width: 40px;
+            height: 1px;
+            background: #2a3050;
+            margin: 10px 0;
+        }
+
+        .media-box img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 6px;
+            max-height: 180px;
+            object-fit: contain;
+        }
+
+        .flag-box {
+            border-color: #2a3050;
+        }
+
+        .audio-box audio {
+            width: 100%;
+            margin-top: 8px;
+            background: #0a0c16;
+            border-radius: 30px;
+            filter: grayscale(0.3);
+        }
+
+        .audio-box audio::-webkit-media-controls-panel {
+            background: #1a1f30;
+        }
+
+        .contact-block {
+            margin-top: 28px;
+            padding: 20px 24px 18px;
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contact-block .contact-row {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .contact-block .contact-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #6a7294;
+            font-weight: 600;
+            min-width: 110px;
+        }
+
+        .contact-block .contact-value {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #e8ecf7;
+        }
+
+        .contact-block .contact-value .email {
+            color: #7aa9d4;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-block .citizenship-note {
+            margin-top: 10px;
+            padding-top: 12px;
+            border-top: 1px solid #1a1f30;
+            font-size: 0.9rem;
+            color: #8f97b5;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .contact-block .citizenship-note span {
+            color: #d4af37;
+            font-weight: 400;
+        }
+
+        .form-block {
+            margin-top: 28px;
+            padding: 20px 24px 18px;
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .form-block .form-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #6a7294;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-block .form-link {
+            display: inline-block;
+            padding: 10px 28px;
+            background: #1e2340;
+            border: 1px solid #d4af37;
+            border-radius: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
+
+        .form-block .form-link:hover {
+            background: #d4af37;
+            color: #0a0c16;
+        }
+
+        .form-block .form-hint {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #5a627f;
+        }
+
+        /* Блок конфликта: лево-право */
+        .conflict-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .conflict-row .conflict-text {
+            flex: 1 1 200px;
+        }
+
+        .conflict-row .conflict-doc {
+            flex: 0 0 auto;
+            background: #0f121f;
+            border: 1px dashed #6b2e2e;
+            border-radius: 10px;
+            padding: 12px 16px;
+            text-align: center;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .conflict-row .conflict-doc .doc-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6a7294;
+        }
+
+        .conflict-row .conflict-doc .doc-placeholder {
+            font-size: 0.85rem;
+            color: #5a627f;
+            margin-top: 4px;
+        }
+
+        .conflict-row .conflict-doc img {
+            max-width: 100%;
+            border-radius: 6px;
+            max-height: 140px;
+            object-fit: contain;
+        }
+
+        .card-conflict .value small {
+            color: #b88a8a;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #1a1f30;
+        }
+
+        .back-link a {
+            color: #6a7294;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+
+        .back-link a:hover {
+            color: #d4af37;
+        }
+
+        .footer {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1f30;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #4f5677;
+            letter-spacing: 1px;
+        }
+
+        .footer span {
+            color: #6a7294;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 16px;
+            }
+            .container {
+                padding: 24px 18px;
+            }
+            .header .state-name {
+                font-size: 1.6rem;
+                letter-spacing: 3px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .media-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .card .value {
+                font-size: 1rem;
+            }
+            .goals-list li {
+                font-size: 0.95rem;
+                padding: 8px 0;
+            }
+            .contact-block .contact-row {
+                flex-direction: column;
+                gap: 2px;
+            }
+            .contact-block .contact-label {
+                min-width: auto;
+            }
+            .conflict-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .conflict-row .conflict-doc {
+                flex: 1 1 auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header .state-name {
+                font-size: 1.3rem;
+            }
+            .header .motto {
+                font-size: 0.9rem;
+            }
+            .form-block .form-link {
+                padding: 8px 18px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="state-name">
+                ССРС
+                <small>Советская Социалистическая Республика Селестия</small>
+            </div>
+            <div class="motto">
+                Девиз: <span>«Победа Вселенского коммунизма неизбежна!»</span>
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+                <div class="label">Глава государства (Генсек ЦГА КПС)</div>
+                <div class="value">Аанталций Вантридлим</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Заместитель (Замгенсек ЦГА КПС)</div>
+                <div class="value">Александра Антонова</div>
+            </div>
+
+            <div class="card full">
+                <div class="label">Государственные языки</div>
+                <div class="value">Русский</div>
+            </div>
+
+            <div class="card full">
+                <div class="label">Государственная валюта</div>
+                <div class="value">Российский Рубль</div>
+            </div>
+
+            <div class="card full">
+                <div class="label">Территориальные претензии</div>
+                <div class="value">
+                    Космические пространства
+                    <small>Столица: <span class="accent">Япет</span> (спутник Сатурна)</small>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Блок конфликта с переработанной вёрсткой: текст слева, картинка справа -->
+        <div class="card card-conflict full" style="margin-bottom: 32px;">
+            <div class="label">Нынешние конфликты</div>
+            <div class="conflict-row">
+                <div class="conflict-text">
+                    <div class="value">
+                        Объявление войны Асгардии
+                        <small>Состояние войны с космическим королевством</small>
+                    </div>
+                </div>
+                <div class="conflict-doc">
+                    <span class="doc-label">Письмо</span>
+                    <img src="letter_1_ssrs.jpg" alt="Письмо-объявление войны" />
+                </div>
+            </div>
+        </div>
+
+        <div class="card full" style="margin-bottom: 32px; border-color: #2a3050;">
+            <div class="label">Стратегические цели</div>
+            <ul class="goals-list">
+                <li>
+                    <span class="num">01</span>
+                    <span class="goal-text">Свержение буржуазного режима во вселенной</span>
+                </li>
+                <li>
+                    <span class="num">02</span>
+                    <span class="goal-text">Колонизация Луны</span>
+                </li>
+                <li>
+                    <span class="num">03</span>
+                    <span class="goal-text">Получение признания от ООН</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="media-grid">
+
+            <div class="media-box flag-box">
+                <div class="media-label">Государственный флаг</div>
+                <img src="flag_ssrs.png" alt="Флаг ССРС" />
+                <div style="font-size:0.6rem; color:#4f5677; margin-top:6px;">флаг ССРС</div>
+            </div>
+
+            <div class="media-box audio-box">
+                <div class="media-label">Государственный гимн</div>
+                <audio controls style="width:100%;">
+                    <source src="anthem_ssrc.mp3" type="audio/mpeg" />
+                    <source src="anthem_ssrc.ogg" type="audio/ogg" />
+                    Ваш браузер не поддерживает аудио.
+                </audio>
+                <div style="font-size:0.6rem; color:#4f5677; margin-top:6px;">гимн ССРС (Интернационал)</div>
+            </div>
+
+        </div>
+
+        <div class="form-block">
+            <span class="form-label">Подача заявки на гражданство</span>
+            <a href="https://forms.gle/At3xP7DU3mcnekqs8" target="_blank" class="form-link">Заполнить анкету →</a>
+            <div class="form-hint">Заявки рассматриваются в течение 30 рабочих дней</div>
+        </div>
+
+        <div class="back-link">
+            <a href="citizenship.html">Условия получения гражданства ССРС→</a>
+        </div>
+
+        <div class="contact-block">
+            <div class="contact-row">
+                <span class="contact-label">Официальная почта</span>
+                <span class="contact-value">
+                    <span class="email">Aantaltciyfromspace@gmail.com</span>
+                </span>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>ССРС</span> · ЦГА КПС · 2026 · Космос — достояние трудящихся
+        </div>
+
+    </div>
+
+</body>
+</html>
