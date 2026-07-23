@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>УАК ССРС — Уголовно-Административный Кодекс</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c16;
+            font-family: 'Inter', sans-serif;
+            color: #d6dceb;
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            width: 100%;
+            background: #0f121f;
+            border: 1px solid #262c44;
+            border-radius: 24px;
+            padding: 44px 48px 36px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #262c44;
+            padding-bottom: 28px;
+            margin-bottom: 32px;
+        }
+
+        .header .state-name {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: #d4af37;
+        }
+
+        .header .state-name small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #7a82a0;
+            display: block;
+            margin-top: 4px;
+        }
+
+        .header .motto {
+            margin-top: 14px;
+            font-size: 1rem;
+            font-weight: 400;
+            color: #b8bfd6;
+            letter-spacing: 1.5px;
+            border-top: 1px solid #1e2340;
+            padding-top: 14px;
+        }
+
+        .header .motto span {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .code-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 14px;
+            padding: 16px 24px;
+            margin-bottom: 28px;
+            font-size: 0.9rem;
+            color: #8f97b5;
+        }
+
+        .code-info .accent {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .chapter {
+            margin-bottom: 32px;
+            border-left: 3px solid #d4af37;
+            padding-left: 20px;
+        }
+
+        .chapter-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #e8ecf7;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .chapter-title .num {
+            color: #d4af37;
+            font-weight: 900;
+        }
+
+        .article {
+            background: #131827;
+            border: 1px solid #232940;
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            transition: 0.15s;
+        }
+
+        .article:hover {
+            border-color: #3a415f;
+        }
+
+        .article-header {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .article-number {
+            font-weight: 700;
+            color: #d4af37;
+            font-size: 0.95rem;
+            min-width: 32px;
+        }
+
+        .article-name {
+            font-weight: 600;
+            color: #e8ecf7;
+            font-size: 1.05rem;
+        }
+
+        .article-penalty {
+            font-size: 0.8rem;
+            color: #b55a5a;
+            font-weight: 500;
+            margin-left: auto;
+            background: #1a1f30;
+            padding: 2px 12px;
+            border-radius: 20px;
+            border: 1px solid #6b2e2e;
+            white-space: nowrap;
+        }
+
+        .article-text {
+            font-size: 0.95rem;
+            color: #b8bfd6;
+            font-weight: 300;
+            line-height: 1.5;
+            margin-top: 4px;
+            padding-left: 44px;
+        }
+
+        .article-text .sub {
+            display: block;
+            padding-left: 20px;
+            margin-top: 6px;
+            border-left: 2px solid #2a3050;
+            color: #a0a8c0;
+        }
+
+        .article-text .sub .sub-label {
+            color: #6a7294;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .final-block {
+            background: #131827;
+            border: 1px solid #d4af37;
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin-top: 36px;
+            text-align: center;
+        }
+
+        .final-block .final-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .final-block .final-text {
+            font-size: 0.95rem;
+            color: #b8bfd6;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .final-block .final-text span {
+            color: #d4af37;
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 18px;
+            border-top: 1px solid #1a1f30;
+        }
+
+        .back-link a {
+            color: #6a7294;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+
+        .back-link a:hover {
+            color: #d4af37;
+        }
+
+        .footer {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #1a1f30;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #4f5677;
+            letter-spacing: 1px;
+        }
+
+        .footer span {
+            color: #6a7294;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 16px;
+            }
+            .container {
+                padding: 24px 16px;
+            }
+            .header .state-name {
+                font-size: 1.5rem;
+                letter-spacing: 3px;
+            }
+            .code-info {
+                flex-direction: column;
+                gap: 6px;
+                font-size: 0.8rem;
+            }
+            .chapter {
+                padding-left: 12px;
+            }
+            .chapter-title {
+                font-size: 1.1rem;
+            }
+            .article {
+                padding: 14px 16px;
+            }
+            .article-text {
+                padding-left: 0;
+                font-size: 0.9rem;
+            }
+            .article-text .sub {
+                padding-left: 12px;
+            }
+            .article-penalty {
+                margin-left: 0;
+                white-space: normal;
+                font-size: 0.7rem;
+            }
+            .final-block {
+                padding: 18px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header .state-name {
+                font-size: 1.2rem;
+            }
+            .header .motto {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="state-name">
+                УАК ССРС
+                <small>Уголовно-Административный Кодекс ССР Селестия</small>
+            </div>
+            <div class="motto">
+                Девиз: <span>«Победа Вселенского коммунизма неизбежна!»</span>
+            </div>
+        </div>
+
+        <div class="code-info">
+            <span>Принят Постановлением ЦГА КПС от <span class="accent">2026.07.18</span></span>
+            <span>Действует на всей территории ССРС</span>
+        </div>
+
+        <!-- Общие положения -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">●</span> Общие положения
+            </div>
+            <div style="background: #131827; border: 1px solid #232940; border-radius: 12px; padding: 18px 22px; color: #b8bfd6; font-weight: 300; line-height: 1.6;">
+                Преступлением признается деяние, посягающее на мирное сосуществование граждан, устои социалистического государства, здоровье нации и историческую память. Наказание назначается с учетом классового происхождения виновного (в сторону смягчения для пролетариата) и степени осознания вины.
+            </div>
+        </div>
+
+        <!-- Глава 1 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 1.</span> Преступления против личности и собственности
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">1.</span>
+                    <span class="article-name">Умышленное причинение смерти (Убийство)</span>
+                    <span class="article-penalty">⚡ пожизненное лишение гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Лишение жизни другого человека.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">2.</span>
+                    <span class="article-name">Умышленное причинение тяжкого вреда здоровью</span>
+                    <span class="article-penalty">⚡ до 10 лет лишения гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">—</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">3.</span>
+                    <span class="article-name">Побои и истязания</span>
+                    <span class="article-penalty">⚡ до 7 лет лишения гражданства (без изъятия)</span>
+                </div>
+                <div class="article-text">Систематическое нанесение физических страданий.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">4.</span>
+                    <span class="article-name">Кража</span>
+                    <span class="article-penalty">⚡ штраф до 5-кратной стоимости или до 1 года лишения гражданства</span>
+                </div>
+                <div class="article-text">Тайное хищение имущества.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">5.</span>
+                    <span class="article-name">Грабеж</span>
+                    <span class="article-penalty">⚡ до 4 лет лишения гражданства (без изъятия)</span>
+                </div>
+                <div class="article-text">Открытое хищение без насилия.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">6.</span>
+                    <span class="article-name">Разбой</span>
+                    <span class="article-penalty">⚡ до 10 лет лишения гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Хищение с угрозой жизни.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">7.</span>
+                    <span class="article-name">Вымогательство</span>
+                    <span class="article-penalty">⚡ до 3 лет лишения гражданства</span>
+                </div>
+                <div class="article-text">Требование передачи имущества под угрозой.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">8.</span>
+                    <span class="article-name">Мошенничество</span>
+                    <span class="article-penalty">⚡ штраф в 2-кратном размере + до 5 лет лишения гражданства</span>
+                </div>
+                <div class="article-text">Хищение путем обмана.</div>
+            </div>
+        </div>
+
+        <!-- Глава 2 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 2.</span> Преступления против здоровья нации и культурного кода
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">9.</span>
+                    <span class="article-name">Реабилитация нацизма</span>
+                    <span class="article-penalty">⚡ пожизненное лишение гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Отрицание преступлений фашизма, пропаганда свастики, восхваление пособников оккупантов.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">10.</span>
+                    <span class="article-name">Реабилитация сталинизма</span>
+                    <span class="article-penalty">⚡ пожизненное лишение гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Оправдание репрессий, культовое почитание И.В. Сталина, фальсификация его роли в свертывании Ленинской гвардии.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">11.</span>
+                    <span class="article-name">Незаконный оборот азартной атрибутики</span>
+                </div>
+                <div class="article-text">
+                    <span class="sub">
+                        <span class="sub-label">11.1.</span> Хранение игральных карт свыше 120 штук — штраф 10 000 Рублей за каждую лишнюю карту и её изъятие.
+                    </span>
+                    <span class="sub">
+                        <span class="sub-label">11.2.</span> Хранение игральных костей (кубиков) свыше 6 единиц — штраф 5 000 Рублей за каждый лишний кубик и его изъятие.
+                    </span>
+                </div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">12.</span>
+                    <span class="article-name">Пропаганда сахарозависимости</span>
+                    <span class="article-penalty">⚡ штраф 15 000 Рублей</span>
+                </div>
+                <div class="article-text">Массовое распространение сахара (более 5 кг в одни руки) без цели переработки.</div>
+            </div>
+        </div>
+
+        <!-- Глава 3 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 3.</span> Преступления против порядка управления и общественной безопасности
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">13.</span>
+                    <span class="article-name">Оскорбление Генсека или ЦГА КПС</span>
+                    <span class="article-penalty">⚡ штраф до 100 000 Рублей или до 10 лет лишения гражданства</span>
+                </div>
+                <div class="article-text">Публичное унижение чести и достоинства руководства.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">14.</span>
+                    <span class="article-name">Несанкционированный митинг</span>
+                    <span class="article-penalty">⚡ штраф до 50 000 Рублей</span>
+                </div>
+                <div class="article-text">Собрание без санкции местного Совета.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">15.</span>
+                    <span class="article-name">Хулиганство</span>
+                    <span class="article-penalty">⚡ до 2 месяцев лишения гражданства (повтор — удвоение срока)</span>
+                </div>
+                <div class="article-text">Грубое нарушение общественного порядка, выражающее явное неуважение к обществу.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">16.</span>
+                    <span class="article-name">Уничтожение или повреждение государственного имущества</span>
+                    <span class="article-penalty">⚡ возмещение ущерба в 3-кратном размере</span>
+                </div>
+                <div class="article-text">—</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">17.</span>
+                    <span class="article-name">Дача или получение взятки</span>
+                    <span class="article-penalty">⚡ до 5 лет лишения гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Любая передача ценностей за решение вопроса (кроме партийных членских взносов).</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">18.</span>
+                    <span class="article-name">Нарушение пограничного режима</span>
+                </div>
+                <div class="article-text">
+                    <span class="sub">
+                        <span class="sub-label">18.1.</span> Проникновение в ограниченные зоны (военные объекты, правительственные здания, ГЗО, ТЗО, Б-РЗО и др.) — до 15 лет лишения гражданства + профилактическая беседа.
+                    </span>
+                    <span class="sub">
+                        <span class="sub-label">18.2.</span> Пересечение региональных границ без уведомления (вхождение в АССРГ Андромеда) — до 10 лет лишения гражданства + штраф 200 000 Рублей.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Глава 4 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 4.</span> Преступления против половой неприкосновенности
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">19.</span>
+                    <span class="article-name">Изнасилование</span>
+                    <span class="article-penalty">⚡ пожизненное лишение гражданства</span>
+                </div>
+                <div class="article-text">—</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">20.</span>
+                    <span class="article-name">Развратные действия без насилия</span>
+                    <span class="article-penalty">⚡ до 10 лет лишения гражданства</span>
+                </div>
+                <div class="article-text">—</div>
+            </div>
+        </div>
+
+        <!-- Глава 5 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 5.</span> Экономические и фискальные преступления
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">21.</span>
+                    <span class="article-name">Подделка государственных рублей ССРС</span>
+                    <span class="article-penalty">⚡ до 6 лет лишения гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Изготовление фальшивой валюты.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">22.</span>
+                    <span class="article-name">Злостное уклонение от уплаты налогов (партийного сбора)</span>
+                    <span class="article-penalty">⚡ штраф в двукратном размере</span>
+                </div>
+                <div class="article-text">—</div>
+            </div>
+        </div>
+
+        <!-- Глава 6 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 6.</span> Особые экономические запреты (Возрастные ограничения)
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">23.</span>
+                    <span class="article-name">Нарушение возрастного регламента потребления</span>
+                </div>
+                <div class="article-text">
+                    <span class="sub">
+                        <span class="sub-label">23.1.</span> Употребление, покупка или продажа черного чая, кофе и чистого сахара (кроме фруктов и продуктов с содержанием &lt;5%) лицам до 14 лет — продавец: штраф 20 000 Рублей, потребитель: профилактическая беседа.
+                    </span>
+                    <span class="sub">
+                        <span class="sub-label">23.2.</span> Хранение/употребление каннабиса и алкоголя крепостью до 5% (пиво, сидр) лицам до 18 лет — штраф до 40 000 Рублей или до 2 лет лишения гражданства.
+                    </span>
+                    <span class="sub">
+                        <span class="sub-label">23.3.</span> Хранение/употребление табака и алкоголя крепостью свыше 5% (включая крепленое вино) лицам до 21 года — штраф до 70 000 Рублей или до 4 лет лишения гражданства.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Глава 7 -->
+        <div class="chapter">
+            <div class="chapter-title">
+                <span class="num">Глава 7.</span> Военные преступления
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">24.</span>
+                    <span class="article-name">Дезертирство</span>
+                    <span class="article-penalty">⚡ пожизненное лишение гражданства + изъятие имущества</span>
+                </div>
+                <div class="article-text">Самовольное оставление службы в Армии ССРС в военное время.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">25.</span>
+                    <span class="article-name">Сотрудничество с внешними агрессорами</span>
+                    <span class="article-penalty">⚡ высшая мера наказания (расстрел)</span>
+                </div>
+                <div class="article-text">Переход на сторону врага.</div>
+            </div>
+
+            <div class="article">
+                <div class="article-header">
+                    <span class="article-number">26.</span>
+                    <span class="article-name">Геноцид</span>
+                    <span class="article-penalty">⚡ высшая мера наказания</span>
+                </div>
+                <div class="article-text">Массовое убийство той или иной формы биологической жизни с целью уничтожения.</div>
+            </div>
+        </div>
+
+        <!-- Заключительные положения -->
+        <div class="final-block">
+            <div class="final-title">Заключительные положения</div>
+            <div class="final-text">
+                Судьи ССРС имеют право расширительного толкования данных статей, исходя из принципов <span>«Не навреди Республике»</span> и <span>«Забота о молодом поколении»</span>.
+                <br /><br />
+                <span style="font-weight: 600; color: #d4af37;">Да здравствует КПС!</span>
+            </div>
+        </div>
+
+        <!-- Навигация -->
+        <div class="back-link">
+            <a href="index.html">← Вернуться на главную страницу ССРС</a>
+            &nbsp;·&nbsp;
+            <a href="citizenship.html">Условия гражданства</a>
+        </div>
+
+        <div class="footer">
+            <span>ССРС</span> · ЦГА КПС · 2026 · Космос — достояние трудящихся
+        </div>
+
+    </div>
+
+</body>
+</html>

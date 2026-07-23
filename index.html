@@ -341,7 +341,6 @@
             color: #5a627f;
         }
 
-        /* Блок конфликта: лево-право */
         .conflict-row {
             display: flex;
             align-items: center;
@@ -527,7 +526,6 @@
 
         </div>
 
-        <!-- Блок конфликта с переработанной вёрсткой: текст слева, картинка справа -->
         <div class="card card-conflict full" style="margin-bottom: 32px;">
             <div class="label">Нынешние конфликты</div>
             <div class="conflict-row">
@@ -535,6 +533,9 @@
                     <div class="value">
                         Объявление войны Асгардии
                         <small>Состояние войны с космическим королевством</small>
+                        <small style="color: #d4af37; margin-top: 6px; font-weight: 600;">
+                            Дней с начала войны: <span id="daysCounter">0</span>
+                        </small>
                     </div>
                 </div>
                 <div class="conflict-doc">
@@ -553,7 +554,7 @@
                 </li>
                 <li>
                     <span class="num">02</span>
-                    <span class="goal-text">Колонизация Луны</span>
+                    <span class="goal-text">Нахождение внеземных форм жизни</span>
                 </li>
                 <li>
                     <span class="num">03</span>
@@ -575,7 +576,6 @@
                 <audio controls style="width:100%;">
                     <source src="anthem_ssrc.mp3" type="audio/mpeg" />
                     <source src="anthem_ssrc.ogg" type="audio/ogg" />
-                    Ваш браузер не поддерживает аудио.
                 </audio>
                 <div style="font-size:0.6rem; color:#4f5677; margin-top:6px;">гимн ССРС (Интернационал)</div>
             </div>
@@ -592,6 +592,11 @@
             <a href="citizenship.html">Условия получения гражданства ССРС→</a>
         </div>
 
+        <div class="form-block" style="margin-top: 16px;">
+            <span class="form-label">УАК-ССРС (Уголовно-Административный Кодекс ССР Селестии)</span>
+            <a href="laws.html" target="_blank" class="form-link">Перейти в УАК →</a>
+        </div>
+
         <div class="contact-block">
             <div class="contact-row">
                 <span class="contact-label">Официальная почта</span>
@@ -606,6 +611,18 @@
         </div>
 
     </div>
+
+    <script>
+        function updateDaysCounter() {
+            const startDate = new Date(2026, 6, 14);
+            const currentDate = new Date();
+            const timeDiff = currentDate - startDate;
+            const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            document.getElementById('daysCounter').textContent = daysDiff >= 0 ? daysDiff : 0;
+        }
+
+        updateDaysCounter();
+    </script>
 
 </body>
 </html>
